@@ -1,0 +1,33 @@
+{
+  "name": "tourfrontend",
+  "version": "1.0.0",
+  "description": "Front end para la pagina Tour de Francia",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "export": "next export"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alejo0o/TourFranciaFront.git"
+  },
+  "author": "Angelo Benavidez y Alejandro Vivanco",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alejo0o/TourFranciaFront/issues"
+  },
+  "homepage": "https://github.com/alejo0o/TourFranciaFront#readme",
+  "dependencies": {
+    "next": "10.0.7",
+    "react": "17.0.1",
+    "react-dom": "17.0.1"
+  },
+  "devDependencies": {
+    "babel-plugin-styled-components": "1.12.0",
+    "font-awesome": "4.7.0",
+    "mdbreact": "5.0.1",
+    "styled-components": "5.2.1"
+  }
+}
