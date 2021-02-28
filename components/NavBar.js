@@ -1,41 +1,27 @@
-import styled from 'styled-components'
-import Link from 'next/link'
-
-
-const Nav = styled.nav`
-    height: 80px;
-    background:#000;
-    color: #fff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-`;
-const StyledLink=styled.a`
-    padding: 0rem 5rem;
-`;
+import { Navbar, Nav } from 'react-bootstrap';
 
 const NavBar = () => {
-    return (
-        <Nav>
-            <div>
-                <Link href="/">
-                    <StyledLink>Etapas</StyledLink>
-                </Link>
-                <Link href="/">
-                    <StyledLink>Noticias</StyledLink>
-                </Link>
-                <Link href="/">
-                    <StyledLink>Participantes</StyledLink>
-                </Link>    
-            </div>
-            <div>
-               <Link href="/">
-                    <StyledLink>Log In</StyledLink>
-                </Link>  
-            </div>
-           
+  return (
+    <Navbar expand='lg' style={{ background: 'red' }}>
+      <Navbar.Brand href='#home'>
+        <img
+          alt=''
+          src='https://cdn.todomountainbike.net/images/articles/2020/tour-de-francia-2020-aplazado.jpg'
+          width='30'
+          height='30'
+          className='d-inline-block align-top'
+        />{' '}
+        Tour de Francia
+      </Navbar.Brand>
+      <Navbar.Toggle aria-controls='basic-navbar-nav' />
+      <Navbar.Collapse id='basic-navbar-nav'>
+        <Nav className='mr-auto'>
+          <Nav.Link href='#home'>Home</Nav.Link>
+          <Nav.Link href='#link'>Link</Nav.Link>
         </Nav>
-    );
+      </Navbar.Collapse>
+    </Navbar>
+  );
 };
 
 export default NavBar;

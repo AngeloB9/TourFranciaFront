@@ -1,7 +1,7 @@
 import Footer from '../components/Footer';
 import NavBar from '../components/NavBar'
 import Carousel from '../components/Carousel'
-import Noticias from '../components/MainPage/Noticia'
+import Noticia_Participante from '../components/MainPage/Noticia_Participante'
 import Participantes from '../components/Participantes/Participante'
 
 
@@ -13,7 +13,7 @@ const index = () => {
       <div style={{background:"white"}} className="w-100">
         <Carousel/>
       </div>
-      <Noticias/>
+      <Noticia_Participante/>
       <Participantes/>
       <Footer/>
      
