@@ -1,18 +1,18 @@
 import { Modal, Button, Form } from 'react-bootstrap';
 
-const CrearParticipante = ({
+const CrearGanador = ({
   show,
   handleClose,
-  handleChangeParticipantes,
+  handleChangeGanadores,
   handleSubmit,
 }) => {
   return (
     <Modal show={show} onHide={handleClose} size='lg'>
       <Modal.Header closeButton>
-        <Modal.Title>Nuevo Participante</Modal.Title>
+        <Modal.Title>Nuevo Ganador</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Form onSubmit={handleSubmit} onChange={handleChangeParticipantes}>
+        <Form onSubmit={handleSubmit} onChange={handleChangeGanadores}>
           <Form.Group controlId='dni'>
             <Form.Label>DNI</Form.Label>
             <Form.Control name='dni' type='text' placeholder='' required />
@@ -58,6 +58,16 @@ const CrearParticipante = ({
             <Form.Control name='equipo' type='text' placeholder='' required />
           </Form.Group>
 
+          <Form.Group controlId='numero_etapa'>
+            <Form.Label>Etapa Ganada</Form.Label>
+            <Form.Control
+              name='numero_etapa'
+              type='text'
+              placeholder=''
+              required
+            />
+          </Form.Group>
+
           <Form.Group controlId='foto'>
             <Form.Label>Foto</Form.Label>
             <Form.Control name='foto' type='text' placeholder='' required />
@@ -85,4 +95,4 @@ const CrearParticipante = ({
   );
 };
 
-export default CrearParticipante;
+export default CrearGanador;

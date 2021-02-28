@@ -1,11 +1,14 @@
 import { Table, Button } from 'react-bootstrap';
 import utils from '../../utils';
 
-const Etapas = ({ data }) => {
+const Etapas = ({ data, handleModalDelete, handleModalEdit, createShow }) => {
   return (
     <div className='p-3'>
       <h1>Etapas</h1>
-      <Button variant='dark'>Nueva Etapa</Button>
+      <Button variant='dark' onClick={createShow}>
+        Nueva Etapa
+      </Button>
+      {/*-----------------Tabla-------------*/}
       <Table striped bordered hover variant='dark' responsive>
         <thead>
           <tr>
@@ -33,12 +36,20 @@ const Etapas = ({ data }) => {
               <td>{etapa.desnivel_acumulado}</td>
               <td>{etapa.datos_relevantes}</td>
               <td>
-                <Button variant='primary'>
+                <Button
+                  variant='primary'
+                  onClick={() => {
+                    handleModalEdit(etapa);
+                  }}>
                   <i className='fas fa-edit'></i>
                 </Button>
               </td>
               <td>
-                <Button variant='danger'>
+                <Button
+                  variant='danger'
+                  onClick={() => {
+                    handleModalDelete(etapa._id);
+                  }}>
                   <i className='fas fa-trash-alt'></i>
                 </Button>
               </td>

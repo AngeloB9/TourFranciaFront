@@ -1,10 +1,19 @@
 import { Table, Button } from 'react-bootstrap';
 
-const Comentarios = ({ data }) => {
+const Comentarios = ({
+  data,
+  handleModalDelete,
+  handleModalEdit,
+  createShow,
+}) => {
   return (
     <div className='p-3'>
       <h1>Comentarios</h1>
-      <Button variant='dark'>Nuevo Comentario</Button>
+      <Button variant='dark' onClick={createShow}>
+        Nuevo Comentario
+      </Button>
+
+      {/*-----------------Tabla-------------*/}
       <Table striped bordered hover variant='dark' responsive>
         <thead>
           <tr>
@@ -16,18 +25,26 @@ const Comentarios = ({ data }) => {
           </tr>
         </thead>
         <tbody>
-          {data.map((etapa) => (
-            <tr key={etapa._id}>
-              <td>{etapa._id}</td>
-              <td>{etapa.comentario}</td>
-              <td>{etapa.numero_etapa}</td>
+          {data.map((comentario) => (
+            <tr key={comentario._id}>
+              <td>{comentario._id}</td>
+              <td>{comentario.comentario}</td>
+              <td>{comentario.numero_etapa}</td>
               <td>
-                <Button variant='primary'>
+                <Button
+                  variant='primary'
+                  onClick={() => {
+                    handleModalEdit(comentario);
+                  }}>
                   <i className='fas fa-edit'></i>
                 </Button>
               </td>
               <td>
-                <Button variant='danger'>
+                <Button
+                  variant='danger'
+                  onClick={() => {
+                    handleModalDelete(comentario._id);
+                  }}>
                   <i className='fas fa-trash-alt'></i>
                 </Button>
               </td>

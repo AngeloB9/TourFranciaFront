@@ -1,11 +1,14 @@
 import { Table, Button } from 'react-bootstrap';
 import utils from '../../utils';
 
-const Noticias = ({ data }) => {
+const Noticias = ({ data, handleModalDelete, handleModalEdit, createShow }) => {
   return (
     <div className='p-3'>
       <h1>Noticias</h1>
-      <Button variant='dark'>Nueva Noticia</Button>
+      <Button variant='dark' onClick={createShow}>
+        Nueva Noticia
+      </Button>
+      {/*-----------------Tabla-------------*/}
       <Table striped bordered hover variant='dark' responsive>
         <thead>
           <tr>
@@ -31,12 +34,20 @@ const Noticias = ({ data }) => {
               <td>{noticia.resumen}</td>
               <td>{noticia.noticia}</td>
               <td>
-                <Button variant='primary'>
+                <Button
+                  variant='primary'
+                  onClick={() => {
+                    handleModalEdit(noticia);
+                  }}>
                   <i className='fas fa-edit'></i>
                 </Button>
               </td>
               <td>
-                <Button variant='danger'>
+                <Button
+                  variant='danger'
+                  onClick={() => {
+                    handleModalDelete(noticia._id);
+                  }}>
                   <i className='fas fa-trash-alt'></i>
                 </Button>
               </td>
