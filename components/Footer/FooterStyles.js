@@ -1,88 +1,81 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
-.contenedorBarrafoot {
-    margin-top: auto;
+export const contenedorBarrafoot = `
+  margin-top: auto;
     position: relative;
     bottom: 0;
     font-family: 'Georgia';
-  }
-  .barrafoot {
+`;
+export const barrafoot = `
     background-color: #282120;
     color: white;
     font-size: 1em;
     position: relative;
     bottom: 0;
     width: 100%;
-  }
-  .footIconTable {
+`;
+export const footIconTable = `
     width: 70%;
     margin: 0px auto;
     table-layout: fixed;
-  }
-  .footItemTable {
+`;
+export const footItemTable = `
     width: 70%;
     margin: 0px auto;
     table-layout: fixed;
-  }
-  .footTitle {
+`;
+export const footTitle = `
     font-size: 1.2em;
-  }
-  .footLink {
+`;
+export const footLink = `
     color: white;
     font-size: 0.9em;
     text-decoration: none;
-    /* no underline */
-  }
-  .footLink:hover {
-    color: white;
-    text-decoration: none;
-    /* no underline */
-  }
-  .footLinkList {
+`;
+export const footLinkList = `
     display: table;
     margin: 0 auto;
     list-style-type: none;
-  }
-  .footitem {
+`;
+export const footitem = `
     padding: 1em;
     vertical-align: top;
-  }
-  .footicon {
+`;
+export const footicon = `
     padding: 1em;
     color: #005795;
     font-size: 2em;
     text-align: center;
-  }
-  .footicon:hover {
-    color: white;
-  }
-  .footInfo {
+    &:hover{
+        color: white;
+    }
+
+`;
+export const footInfo = `
     background: #FAD02C;
     margin-top: 5em;
     padding: 2em;
     padding-bottom: 3.5em;
-  }
-  .footInfoTable {
+`;
+export const footInfoTable = `
     font-size: 0.7em;
     color: black;
     width: 100%;
     margin: 0px auto;
     table-layout: fixed;
-  }
-  .footLinea1 {
+`;
+export const footLinea1 = `
     box-shadow: 0px 50px 30px -50px #000000, 0px -50px 30px -50px #000000;
     margin: 0 auto;
     padding: 1px;
     width: 70%;
     margin-top: 1em;
     margin-bottom: 1em;
-    
-  }
-  @media screen and (max-width: 768px) {
-    .footLinea1 {
-      width: 85%;
+    @media screen and (max-width: 768px) {
+        width: 85%;
     }
-  }
-  .infoDerecha {
+`;
+
+export const infoDerecha = `
     text-align: right;
-  }
+`;

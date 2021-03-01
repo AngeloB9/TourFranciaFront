@@ -2,7 +2,7 @@ import { Navbar, Nav } from 'react-bootstrap';
 
 const NavBar = () => {
   return (
-    <Navbar expand='lg' style={{ background: 'red' }}>
+    <Navbar expand='lg' style={{ background: 'white' }}>
       <Navbar.Brand href='#home'>
         <img
           alt=''

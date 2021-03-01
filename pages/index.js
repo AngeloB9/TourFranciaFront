@@ -1,20 +1,30 @@
-import Footer from '../components/Footer';
-import NavBar from '../components/NavBar';
+import Layout from '../components/Layouts/Layout';
 import Carousel from '../components/Carousel';
-import Noticia_Participante from '../components/MainPage/Noticia_Participante';
-import Participantes from '../components/Participantes/Participante';
+import CardParticipante from '../components/MainPage/CardParticipante';
+import CardNoticia from '../components/MainPage/CardNoticia';
+import axios from 'axios';
 
-const index = () => {
+export async function getServerSideProps() {
+  const res = await axios.get(process.env.apiURL + '/participantes');
+  const data = res.data;
+
+  return {
+    props: { data }, // se pasara la data automaticamente a la pagina como props
+  };
+}
+
+const index = ({ data }) => {
   return (
     <div>
-      <NavBar />
-      <h1>Hola mundo</h1>
-      <div style={{ background: 'white' }} className='w-100'>
-        <Carousel />
-      </div>
-      <Noticia_Participante />
-      <Participantes />
-      <Footer />
+      <Layout>
+        <div style={{ background: 'white' }} className='w-100'>
+          <Carousel />
+        </div>
+        <h2 style={{ margin: '2em' }}>Participantes</h2>
+        <CardParticipante data={data} />
+        <h2 style={{ margin: '2em' }}>Noticias</h2>
+        <CardNoticia data={data} />
+      </Layout>
     </div>
   );
 };
