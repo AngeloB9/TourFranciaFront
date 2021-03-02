@@ -1,6 +1,7 @@
 import React from 'react';
-import { Grid, Card, Image, Icon } from 'semantic-ui-react';
+import { Grid, Card, Image } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
+import { ContainerTotal, ImageC, CardC } from './CardParticipanteStyle';
 
 const CardParticipantes = ({
   apellido,
@@ -10,28 +11,32 @@ const CardParticipantes = ({
   nacionalidad,
 }) => {
   return (
-    <Card>
-      <Image src={foto} wrapped ui={false} />
-      <Card.Content>
-        <Card.Header>{equipo}</Card.Header>
-        <Card.Meta>
-          <span className='date'>{nacionalidad}</span>
-        </Card.Meta>
-        <Card.Description>
-          {nombre} {apellido}
-        </Card.Description>
-      </Card.Content>
-    </Card>
+    <ContainerTotal>
+      <CardC>
+        <ImageC src={foto} />
+        <Card.Content>
+          <Card.Header>{equipo}</Card.Header>
+          <Card.Meta>
+            <span className='date'>{nacionalidad}</span>
+          </Card.Meta>
+          <Card.Description>
+            {nombre} {apellido}
+          </Card.Description>
+        </Card.Content>
+      </CardC>
+    </ContainerTotal>
   );
 };
 
-function CardParticipante({ data }) {
+function CardParticipante({ data, corte }) {
   console.log(data);
+  let dataCorte = [];
+  corte ? (dataCorte = data.slice(0, 3)) : (dataCorte = data);
   return (
     <div style={{ margin: '5em' }}>
       <Grid columns={3}>
         <Grid.Row>
-          {data.map((participante) => {
+          {dataCorte.map((participante) => {
             return (
               <Grid.Column>
                 <CardParticipantes

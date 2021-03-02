@@ -23,7 +23,7 @@ const index = ({ data, data2 }) => {
           <Carousel />
         </div>
         <h2 style={{ margin: '2em' }}>Participantes</h2>
-        <CardParticipante data={data} />
+        <CardParticipante data={data} corte={true} />
         <h2 style={{ margin: '2em' }}>Noticias</h2>
         <CardNoticia data={data2} />
       </Layout>
