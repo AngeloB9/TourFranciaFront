@@ -2,10 +2,14 @@ import React from 'react';
 import { Grid, Card, Image, Icon } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 
-const CardNoticia = ({ titulo, foto, resumen }) => {
+const CardNoticia = ({ titulo, portada, resumen }) => {
   return (
     <Card>
-      <Image src={foto} wrapped ui={false} />
+      <Image
+        style={{ height: '15em', width: '20.7em' }}
+        src={portada}
+        ui={true}
+      />
       <Card.Content>
         <Card.Header>{titulo}</Card.Header>
         <Card.Meta>
@@ -16,12 +20,6 @@ const CardNoticia = ({ titulo, foto, resumen }) => {
     </Card>
   );
 };
-const lista = [
-  { nombre: 'Angelo 1' },
-  { nombre: 'Angelo 2' },
-  { nombre: 'Angelo 3' },
-  { nombre: 'Angelo 4' },
-];
 
 function Noticia({ data }) {
   console.log(data);
@@ -34,7 +32,7 @@ function Noticia({ data }) {
               <Grid.Column>
                 <CardNoticia
                   titulo={noticias.titulo}
-                  foto={noticias.foto}
+                  portada={noticias.portada}
                   resumen={noticias.resumen}
                 />
                 <br />

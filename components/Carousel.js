@@ -20,7 +20,7 @@ const CarouselPage = () => {
           <MDBCarouselItem itemId='1'>
             <MDBView>
               <img
-                className='d-block w-100'
+                className='d-block w-100 max-width: 100%'
                 src='https://mdbootstrap.com/img/Photos/Slides/img%20(130).jpg'
                 alt='First slide'
               />
