@@ -1,11 +1,9 @@
-import { useState } from 'react';
-import { Spinner } from 'react-bootstrap';
-import CardNoticia from '../../../components/MainPage/CardNoticia';
+import ParticipanteId from '../../../components/Participantes/ParticipanteId';
 import axios from 'axios';
 import Layout from '../../../components/Layouts/Layout';
 
 export async function getServerSideProps() {
-  const res = await axios.get(process.env.apiURL + '/noticias');
+  const res = await axios.get(process.env.apiURL + '/participantes');
   const data = res.data;
 
   return {
@@ -16,8 +14,8 @@ const index = ({ data }) => {
   return (
     <div>
       <Layout>
-        <h2 style={{ margin: '2em' }}>Noticias</h2>
-        <CardNoticia data={data} corte={false} />
+        <h2 style={{ margin: '2em' }}>Participante</h2>
+        <ParticipanteId data={data} />
       </Layout>
     </div>
   );

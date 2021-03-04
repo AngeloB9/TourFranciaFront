@@ -25,7 +25,7 @@ const index = ({ data, data2 }) => {
         <h2 style={{ margin: '2em' }}>Participantes</h2>
         <CardParticipante data={data} corte={true} />
         <h2 style={{ margin: '2em' }}>Noticias</h2>
-        <CardNoticia data={data2} />
+        <CardNoticia data={data2} corte={true} />
       </Layout>
     </div>
   );

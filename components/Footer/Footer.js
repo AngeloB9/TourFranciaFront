@@ -10,12 +10,12 @@ const Footer = () => {
       today.getDate();
 
   return (
-    <MDBFooter color='blue' className='font-small pt-4 mt-4'>
+    <MDBFooter color='black' className='font-small pt-4 mt-4'>
       <MDBContainer fluid className='text-center text-md-left'>
         <MDBRow>
           <MDBCol md='6'>
             <h5 className='title'>
-              Tour de Francia - Todos los derechos reservados
+              © Tour de Francia - Todos los derechos reservados
             </h5>
             <p>Polìticas de accesibilidad.</p>
           </MDBCol>
@@ -38,7 +38,9 @@ const Footer = () => {
           </MDBCol>
         </MDBRow>
       </MDBContainer>
-      <div className='footer-copyright text-center py-3'>
+      <div
+        className='footer-copyright text-center py-3'
+        style={{ background: 'yellow', color: 'black' }}>
         <MDBContainer fluid>
           <a> Tour Francia - Fecha actual: {date} </a>
         </MDBContainer>

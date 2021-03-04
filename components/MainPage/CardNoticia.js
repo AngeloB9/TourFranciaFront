@@ -1,36 +1,37 @@
 import React from 'react';
 import { Grid, Card, Image, Icon } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
+import { ContainerTotal, ImageC, CardC } from './CardNoticiaStyle';
 
-const CardNoticia = ({ titulo, portada, resumen }) => {
+const CardNoticias = ({ titulo, portada, resumen }) => {
   return (
-    <Card>
-      <Image
-        style={{ height: '15em', width: '20.7em' }}
-        src={portada}
-        ui={true}
-      />
-      <Card.Content>
-        <Card.Header>{titulo}</Card.Header>
-        <Card.Meta>
-          <span className='date'>"Noticias"</span>
-        </Card.Meta>
-        <Card.Description>{resumen}</Card.Description>
-      </Card.Content>
-    </Card>
+    <ContainerTotal>
+      <CardC>
+        <ImageC src={portada} />
+        <Card.Content>
+          <Card.Header>{titulo}</Card.Header>
+          <Card.Meta>
+            <span className='date'>"Noticias"</span>
+          </Card.Meta>
+          <Card.Description>{resumen}</Card.Description>
+        </Card.Content>
+      </CardC>
+    </ContainerTotal>
   );
 };
 
-function Noticia({ data }) {
+function CardNoticia({ data, corte }) {
   console.log(data);
+  let dataCorte = [];
+  corte ? (dataCorte = data.slice(0, 3)) : (dataCorte = data);
   return (
-    <div style={{ margin: '5em' }}>
+    <div style={{ margin: '7em' }}>
       <Grid columns={3}>
         <Grid.Row>
           {data.map((noticias) => {
             return (
               <Grid.Column>
-                <CardNoticia
+                <CardNoticias
                   titulo={noticias.titulo}
                   portada={noticias.portada}
                   resumen={noticias.resumen}
@@ -45,4 +46,4 @@ function Noticia({ data }) {
   );
 }
 
-export default Noticia;
+export default CardNoticia;

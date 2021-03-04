@@ -33,7 +33,7 @@ function CardParticipante({ data, corte }) {
   let dataCorte = [];
   corte ? (dataCorte = data.slice(0, 3)) : (dataCorte = data);
   return (
-    <div style={{ margin: '5em' }}>
+    <div style={{ marginLeft: '7em' }}>
       <Grid columns={3}>
         <Grid.Row>
           {dataCorte.map((participante) => {

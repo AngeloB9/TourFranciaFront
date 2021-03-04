@@ -21,7 +21,7 @@ const CarouselPage = () => {
             <MDBView>
               <img
                 className='d-block w-100 max-width: 100%'
-                src='https://mdbootstrap.com/img/Photos/Slides/img%20(130).jpg'
+                src='https://notinforma.com/wp-content/uploads/2020/09/tourdefranceftrjpg_123f1wsqkuivf1sxr2lpogqvs3.jpg'
                 alt='First slide'
               />
             </MDBView>
@@ -30,7 +30,7 @@ const CarouselPage = () => {
             <MDBView>
               <img
                 className='d-block w-100'
-                src='https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg'
+                src='https://deportesimagenes.canalrcn.com/ImgDeportesNew/tourdefranciaetapas21egan11111.jpg'
                 alt='Second slide'
               />
             </MDBView>
@@ -39,7 +39,7 @@ const CarouselPage = () => {
             <MDBView>
               <img
                 className='d-block w-100'
-                src='https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg'
+                src='https://s.france24.com/media/display/ae72d042-e3d3-11ea-a376-005056a98db9/w:1280/p:16x9/6558ee73658087af41e50f7ab37b426595a8a662.webp'
                 alt='Third slide'
               />
             </MDBView>
