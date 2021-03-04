@@ -5,9 +5,11 @@ export const ContainerTotal = styled.div`
    {
     width: 30em;
     height: 30em;
+    margin-left: 7em;
     @media (max-width: 768px) {
       width: 15em;
       height: 15em;
+      margin-left: 5em;
     }
     @media (max-width: 540px) {
       width: 8em;

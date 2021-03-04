@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Spinner } from 'react-bootstrap';
 import CardParticipante from '../../../components/MainPage/CardParticipante';
+import ParticipanteId from '../../../components/Participantes/ParticipanteId';
 import axios from 'axios';
 import Layout from '../../../components/Layouts/Layout';
 
