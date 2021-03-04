@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Spinner } from 'react-bootstrap';
+import Loader from '../../../components/Loader/Loader';
 import Error from '../../Error';
 import AdminLayout from '../../../components/Layouts/AdminLayout';
 import ParticipantesTable from '../../../components/Admin/Tables/Participantes';
@@ -7,6 +7,9 @@ import DeleteModal from '../../../components/Admin/Modals/DeleteModal';
 import CreateModal from '../../../components/Admin/Forms/CrearParticipante';
 import EditModal from '../../../components/Admin/Forms/EditarParticipante';
 import axios from 'axios';
+import WarningModal from '../../../components/Admin/Modals/WarningUser';
+import Cookies from 'universal-cookie';
+const cookie = new Cookies();
 
 export async function getServerSideProps() {
   const res = await axios.get(process.env.apiURL + '/participantes');
@@ -54,6 +57,10 @@ const index = ({ data }) => {
   const [deleteModal, setdeleteModal] = useState(false);
   const deleteClose = () => setdeleteModal(false);
   const deleteShow = () => setdeleteModal(true);
+  //Modal warning para usuarios invitados
+  const [warningModal, setwarningModal] = useState(false);
+  const warningClose = () => setwarningModal(false);
+  const warningShow = () => setwarningModal(true);
 
   //----------Funciones de la pagina-------------//
   //Cambia los datos del participante
@@ -74,14 +81,20 @@ const index = ({ data }) => {
   const handleSubmit = async (event) => {
     setloading(true);
     event.preventDefault();
-    try {
-      await axios.post(`${process.env.apiURL}/participantes`, participante);
-      setloading(false);
-      window.location.reload();
-    } catch (Err) {
-      console.log(Err);
-      seterror(Err);
-      setloading(false);
+    if (cookie.get('usuario')) {
+      if (cookie.get('usuario').admin) {
+        try {
+          await axios.post(`${process.env.apiURL}/participantes`, participante);
+          setloading(false);
+          window.location.reload();
+        } catch (error) {
+          seterror(error.message);
+          setloading(false);
+        }
+      } else {
+        setloading(false);
+        warningShow();
+      }
     }
   };
   const handleModalEdit = (editar_participante) => {
@@ -103,27 +116,46 @@ const index = ({ data }) => {
       setloading(false);
       window.location.reload();
     } catch (error) {
-      seterror(error);
+      console.log(error);
+      seterror(error.message);
       setloading(false);
     }
   };
   const handleDelete = async (dni) => {
     setloading(true);
-    try {
-      const response = await axios.delete(
-        `${process.env.apiURL}/participantes/${dni}`
-      );
-      //console.log(response.status);
-      setloading(false);
-      window.location.reload();
-    } catch (error) {
-      seterror(error);
-      setloading(false);
+    if (cookie.get('usuario')) {
+      if (cookie.get('usuario').admin) {
+        try {
+          const response = await axios.delete(
+            `${process.env.apiURL}/participantes/${dni}`
+          );
+
+          setloading(false);
+          window.location.reload();
+        } catch (error) {
+          seterror(error.message);
+          setloading(false);
+        }
+      } else {
+        setloading(false);
+        warningShow();
+      }
     }
   };
-
-  if (error) return <Error message='error'></Error>;
-  if (loading) return <Spinner></Spinner>;
+  if (error)
+    return (
+      <AdminLayout>
+        <Error
+          message={error}
+          style={{ marginLeft: 'auto', marginTop: 'auto' }}></Error>
+      </AdminLayout>
+    );
+  if (loading)
+    return (
+      <AdminLayout>
+        <Loader />
+      </AdminLayout>
+    );
   return (
     <AdminLayout>
       <ParticipantesTable
@@ -134,6 +166,8 @@ const index = ({ data }) => {
         handleModalEdit={handleModalEdit}
         createShow={createShow}
       />
+      {/*-----------Modal de advertencia para usuarios no permitidos-------------- */}
+      <WarningModal show={warningModal} handleClose={warningClose} />
       {/*-----------Modal para Editar-------------- */}
       <EditModal
         show={editarModal}

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Spinner } from 'react-bootstrap';
+import Loader from '../../../components/Loader/Loader';
 import Error from '../../Error';
 import AdminLayout from '../../../components/Layouts/AdminLayout';
 import ComentariosTable from '../../../components/Admin/Tables/Comentarios';
@@ -7,6 +7,9 @@ import DeleteModal from '../../../components/Admin/Modals/DeleteModal';
 import CreateModal from '../../../components/Admin/Forms/CrearComentario';
 import EditModal from '../../../components/Admin/Forms/EditarComentario';
 import axios from 'axios';
+import { useRouter } from 'next/router';
+import Cookies from 'universal-cookie';
+const cookie = new Cookies();
 
 export async function getServerSideProps() {
   const res = await axios.get(process.env.apiURL + '/comentarios');
@@ -18,6 +21,12 @@ export async function getServerSideProps() {
 }
 
 const index = ({ data }) => {
+  //Auth
+  const router = useRouter();
+  if (cookie.get('usuario')) {
+    if (!cookie.get('usuario').admin) router.push('/admin/participantes');
+  }
+
   //----------Estado de la pagina--------//
   const [comentario, setcomentario] = useState({
     comentario: '',
@@ -68,7 +77,7 @@ const index = ({ data }) => {
       setloading(false);
       window.location.reload();
     } catch (error) {
-      seterror(error);
+      seterror(error.message);
       setloading(false);
     }
   };
@@ -92,7 +101,7 @@ const index = ({ data }) => {
       setloading(false);
       window.location.reload();
     } catch (error) {
-      seterror(error);
+      seterror(error.message);
       setloading(false);
     }
   };
@@ -107,50 +116,55 @@ const index = ({ data }) => {
       setloading(false);
       window.location.reload();
     } catch (error) {
-      seterror(error);
+      seterror(error.message);
       setloading(false);
     }
   };
 
-  if (!loading && error != null) return <Error message={error} />;
-  if (!loading && error === null)
+  if (error)
     return (
       <AdminLayout>
-        <ComentariosTable
-          data={data}
-          handleSubmit={handleSubmit}
-          handleDelete={handleDelete}
-          handleModalDelete={handleModalDelete}
-          handleModalEdit={handleModalEdit}
-          createShow={createShow}
-        />
-        {/*-----------Modal para Editar-------------- */}
-        <EditModal
-          show={editarModal}
-          handleChangeComentariosEdit={handleChangeComentariosEdit}
-          handleClose={editClose}
-          handleEdit={handleEdit}
-          comentario={comentarioEdit}
-        />
-        {/*-----------Modal para Crear-------------- */}
-        <CreateModal
-          show={createModal}
-          handleChangeComentarios={handleChangeComentarios}
-          handleClose={createClose}
-          handleSubmit={handleSubmit}
-        />
-        {/*-----------Modal para Eliminar-------------- */}
-        <DeleteModal
-          show={deleteModal}
-          handleClose={deleteClose}
-          ID={_id}
-          handleDelete={handleDelete}
-        />
+        <Error message={error}></Error>
+      </AdminLayout>
+    );
+  if (loading)
+    return (
+      <AdminLayout>
+        <Loader />
       </AdminLayout>
     );
   return (
     <AdminLayout>
-      <Spinner animation='border' variant='warning' />
+      <ComentariosTable
+        data={data}
+        handleSubmit={handleSubmit}
+        handleDelete={handleDelete}
+        handleModalDelete={handleModalDelete}
+        handleModalEdit={handleModalEdit}
+        createShow={createShow}
+      />
+      {/*-----------Modal para Editar-------------- */}
+      <EditModal
+        show={editarModal}
+        handleChangeComentariosEdit={handleChangeComentariosEdit}
+        handleClose={editClose}
+        handleEdit={handleEdit}
+        comentario={comentarioEdit}
+      />
+      {/*-----------Modal para Crear-------------- */}
+      <CreateModal
+        show={createModal}
+        handleChangeComentarios={handleChangeComentarios}
+        handleClose={createClose}
+        handleSubmit={handleSubmit}
+      />
+      {/*-----------Modal para Eliminar-------------- */}
+      <DeleteModal
+        show={deleteModal}
+        handleClose={deleteClose}
+        ID={_id}
+        handleDelete={handleDelete}
+      />
     </AdminLayout>
   );
 };

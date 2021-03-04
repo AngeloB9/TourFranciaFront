@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Spinner } from 'react-bootstrap';
+import Loader from '../../../components/Loader/Loader';
 import Error from '../../Error';
 import AdminLayout from '../../../components/Layouts/AdminLayout';
 import EtapasTable from '../../../components/Admin/Tables/Etapas';
@@ -7,6 +7,9 @@ import DeleteModal from '../../../components/Admin/Modals/DeleteModal';
 import CreateModal from '../../../components/Admin/Forms/CrearEtapa';
 import EditModal from '../../../components/Admin/Forms/EditarEtapa';
 import axios from 'axios';
+import { useRouter } from 'next/router';
+import Cookies from 'universal-cookie';
+const cookie = new Cookies();
 
 export async function getServerSideProps() {
   const res = await axios.get(process.env.apiURL + '/etapas');
@@ -18,6 +21,12 @@ export async function getServerSideProps() {
 }
 
 const index = ({ data }) => {
+  //Auth
+  const router = useRouter();
+  if (cookie.get('usuario')) {
+    if (!cookie.get('usuario').admin) router.push('/admin/participantes');
+  }
+
   //----------Estado de la pagina--------//
   const [etapa, setetapa] = useState({
     tipo: '',
@@ -80,7 +89,7 @@ const index = ({ data }) => {
       setloading(false);
       window.location.reload();
     } catch (error) {
-      seterror(error);
+      seterror(error.message);
       setloading(false);
     }
   };
@@ -103,7 +112,7 @@ const index = ({ data }) => {
       setloading(false);
       window.location.reload();
     } catch (error) {
-      seterror(error);
+      seterror(error.message);
       setloading(false);
     }
   };
@@ -118,13 +127,23 @@ const index = ({ data }) => {
       setloading(false);
       window.location.reload();
     } catch (error) {
-      seterror(error);
+      seterror(error.message);
       setloading(false);
     }
   };
 
-  if (loading) return <Spinner animation='border' variant='warning' />;
-  if (error) return <Error message={error} />;
+  if (error)
+    return (
+      <AdminLayout>
+        <Error message={error}></Error>
+      </AdminLayout>
+    );
+  if (loading)
+    return (
+      <AdminLayout>
+        <Loader />
+      </AdminLayout>
+    );
   return (
     <AdminLayout>
       <EtapasTable
@@ -160,4 +179,5 @@ const index = ({ data }) => {
     </AdminLayout>
   );
 };
+
 export default index;
