@@ -1,5 +1,6 @@
 import React from 'react';
 import { MDBCol, MDBContainer, MDBRow, MDBFooter } from 'mdbreact';
+import Link from 'next/link';
 const Footer = () => {
   var today = new Date(),
     date =
@@ -17,7 +18,11 @@ const Footer = () => {
             <h5 className='title'>
               © Tour de Francia - Todos los derechos reservados
             </h5>
-            <p>Polìticas de accesibilidad.</p>
+            <p>
+              <Link href='/about'>
+                <a>Politicas de accesibilidad</a>
+              </Link>
+            </p>
           </MDBCol>
           <MDBCol md='6'>
             <h5 className='title'>Links</h5>
