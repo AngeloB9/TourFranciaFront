@@ -1,21 +1,32 @@
-import Cookies from 'universal-cookie';
+import Layout from '../components/Layouts/Layout';
+import Carousel from '../components/Carousel';
+import CardParticipante from '../components/MainPage/CardParticipante';
+import CardNoticia from '../components/MainPage/CardNoticia';
+import axios from 'axios';
 
-const cookies = new Cookies();
+export async function getServerSideProps() {
+  const res = await axios.get(process.env.apiURL + '/participantes');
+  const data = res.data;
+  const res2 = await axios.get(process.env.apiURL + '/noticias');
+  const data2 = res2.data;
 
-const index = () => {
+  return {
+    props: { data, data2 }, // se pasara la data automaticamente a la pagina como props
+  };
+}
+
+const index = ({ data, data2 }) => {
   return (
     <div>
-      Soy el index
-      <button
-        onClick={() => {
-          cookies.remove('usuario');
-          window.location.replace('/');
-        }}>
-        Logout
-      </button>
-      <a href={`/login`} className='btn btn-primary'>
-        Login
-      </a>
+      <Layout>
+        <div style={{ background: 'white' }} className='w-100'>
+          <Carousel />
+        </div>
+        <h2 style={{ margin: '2em' }}>Participantes</h2>
+        <CardParticipante data={data} corte={true} />
+        <h2 style={{ margin: '2em' }}>Noticias</h2>
+        <CardNoticia data={data2} corte={true} />
+      </Layout>
     </div>
   );
 };
