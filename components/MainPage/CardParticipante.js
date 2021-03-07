@@ -42,7 +42,7 @@ function CardParticipante({ data, corte }) {
         <Grid.Row>
           {dataCorte.map((participante) => {
             return (
-              <Grid.Column>
+              <Grid.Column key={participante.dni}>
                 <CardParticipantes
                   id={participante.dni}
                   nombre={participante.nombres}

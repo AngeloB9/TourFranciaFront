@@ -31,7 +31,7 @@ const index = () => {
         },
       });
       cookie.set('usuario', response.data, { path: '/' });
-      window.location.replace('/admin/participantes');
+      window.location.replace('/');
     } catch (error) {
       console.log(error);
       seterror(error);
