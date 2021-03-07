@@ -4,10 +4,10 @@ import 'semantic-ui-css/semantic.min.css';
 import { ContainerTotal, ImageC, CardC } from './CardNoticiaStyle';
 import Link from 'next/link';
 
-const CardNoticias = ({ titulo, portada, resumen }) => {
+const CardNoticias = ({ id, titulo, portada, resumen }) => {
   return (
     <ContainerTotal>
-      <Link href='/'>
+      <Link href={`/invitado/noticiaid/${id}`}>
         <CardC>
           <ImageC src={portada} />
           <Card.Content>
@@ -24,7 +24,6 @@ const CardNoticias = ({ titulo, portada, resumen }) => {
 };
 
 function CardNoticia({ data, corte }) {
-  console.log(data);
   let dataCorte = [];
   corte ? (dataCorte = data.slice(0, 3)) : (dataCorte = data);
   return (
@@ -32,10 +31,11 @@ function CardNoticia({ data, corte }) {
       <Grid columns={3}>
         <Grid.Row>
           {dataCorte.map((noticias) => {
+            console.log(noticias.portada);
             return (
-              <Grid.Column>
+              <Grid.Column key={noticias._id}>
                 <CardNoticias
-                  id={noticias.id}
+                  id={noticias._id}
                   titulo={noticias.titulo}
                   portada={noticias.portada}
                   resumen={noticias.resumen}

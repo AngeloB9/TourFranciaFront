@@ -1,7 +1,6 @@
 import ParticipanteId from '../../../components/Participantes/ParticipanteId';
 import axios from 'axios';
 import Layout from '../../../components/Layouts/Layout';
-import { useRouter } from 'next/router';
 
 // const router = useRouter();
 // const id = router.query.id || '';
@@ -22,7 +21,6 @@ const index = ({ participante }) => {
     <div>
       <Layout>
         <h2 style={{ margin: '2em' }}>Participante</h2>
-        hola
         <ParticipanteId participante={participante} />
       </Layout>
     </div>

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Grid, Card, Image } from 'semantic-ui-react';
-import 'semantic-ui-css/semantic.min.css';
-
+import Figure from 'react-bootstrap/Figure';
 const ParticipantebyId = ({
   apellido,
   nombre,
@@ -12,16 +11,19 @@ const ParticipantebyId = ({
   nacionalidad,
 }) => {
   return (
-    <section className='contenedorParticipantesID'>
-      <div className='elementoParticipantesID'>
-        <div className='nombreParticipantesID'>{nombre}</div>
-        <div className='apellidoParticipantesID'>{apellido}</div>
-        <div className='EquipoParticipantesID'>{equipo}</div>
-        <div className='EquipoParticipantesID'>{nacionalidad}</div>
-        <img alt='' src={foto} className='fotoParticipantesID ml-5' />
-        <div className='datosrelevantesParticipantesID'>{datos_relevantes}</div>
+    <Figure>
+      <div className='imagen'>
+        <Figure.Image width={571} height={580} alt='' src={foto} />
+        <style>text-align: center; border-style: solid;</style>
       </div>
-    </section>
+
+      <Figure.Caption>
+        Nombres: {nombre} {apellido}
+      </Figure.Caption>
+      <Figure.Caption>Nacionalidad: {nacionalidad}</Figure.Caption>
+      <Figure.Caption>Equipo: {equipo}</Figure.Caption>
+      <Figure.Caption>Datos relevantes: {datos_relevantes}</Figure.Caption>
+    </Figure>
   );
 };
 
