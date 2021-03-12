@@ -11,19 +11,20 @@ const ParticipantebyId = ({
   nacionalidad,
 }) => {
   return (
-    <Figure>
-      <div className='imagen'>
-        <Figure.Image width={571} height={580} alt='' src={foto} />
-        <style>text-align: center; border-style: solid;</style>
+    <div className='participante_imagen'>
+      <h3>Datos Personales</h3>
+      <div style={{ width: '50%', margin: '0 auto' }}>
+        <img width='100%' height='100%' src={foto} />
       </div>
+      <style>text-align: center; border-style: solid; </style>
+      <h4>
+        {nombre} {apellido}
+      </h4>
 
-      <Figure.Caption>
-        Nombres: {nombre} {apellido}
-      </Figure.Caption>
-      <Figure.Caption>Nacionalidad: {nacionalidad}</Figure.Caption>
-      <Figure.Caption>Equipo: {equipo}</Figure.Caption>
-      <Figure.Caption>Datos relevantes: {datos_relevantes}</Figure.Caption>
-    </Figure>
+      <h5>{nacionalidad}</h5>
+      <h5>{equipo}</h5>
+      <h5>{datos_relevantes}</h5>
+    </div>
   );
 };
 
@@ -40,7 +41,7 @@ function ParticipanteId({ participante }) {
               foto={participante.foto}
               equipo={participante.equipo}
               nacionalidad={participante.nacionalidad}
-              datos={participante.datos_relevantes}
+              datos_relevantes={participante.datos_relevantes}
             />
             <br />
           </Grid.Column>

@@ -19,7 +19,9 @@ const index = ({ noticia }) => {
     <div>
       <Layout>
         <h2 style={{ margin: '2em' }}>Noticia</h2>
-        <NoticiasId noticia={noticia} />
+        <div style={{ padding: '3em 8%' }}>
+          <NoticiasId noticia={noticia} />
+        </div>
       </Layout>
     </div>
   );

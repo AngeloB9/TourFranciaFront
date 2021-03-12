@@ -20,8 +20,10 @@ const index = ({ participante }) => {
   return (
     <div>
       <Layout>
-        <h2 style={{ margin: '2em' }}>Participante</h2>
-        <ParticipanteId participante={participante} />
+        <h2 style={{ margin: '1em' }}>Participante</h2>
+        <div style={{ padding: '3em 8%' }}>
+          <ParticipanteId participante={participante} />
+        </div>
       </Layout>
     </div>
   );

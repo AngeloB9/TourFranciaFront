@@ -3,15 +3,15 @@ import { Grid, Card, Image } from 'semantic-ui-react';
 import Figure from 'react-bootstrap/Figure';
 const NoticiaById = ({ id, foto, titulo, noticia }) => {
   return (
-    <Figure>
-      <div className='imagen'>
-        <Figure.Image width={571} height={580} alt='' src={foto} />
-        <style>text-align: center; border-style: solid;</style>
+    <div className='imagen'>
+      <h1>Título :{titulo}</h1>
+      <div style={{ width: '50%', margin: '0 auto' }}>
+        <img width='100%' height='100%' src={foto} />
       </div>
-
-      <Figure.Caption>Titulo:{titulo}</Figure.Caption>
-      <Figure.Caption>{noticia}</Figure.Caption>
-    </Figure>
+      <style>text-align: center; border-style: solid;</style>
+      <br></br>
+      <h5>{noticia}</h5>
+    </div>
   );
 };
 

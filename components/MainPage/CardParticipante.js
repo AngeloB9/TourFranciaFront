@@ -51,6 +51,7 @@ function CardParticipante({ data, corte }) {
                   equipo={participante.equipo}
                   nacionalidad={participante.nacionalidad}
                 />
+
                 <br />
               </Grid.Column>
             );
