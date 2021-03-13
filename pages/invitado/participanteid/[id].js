@@ -18,12 +18,12 @@ export async function getServerSideProps(context) {
 
 const index = ({ participante }) => {
   return (
-    <div>
-      <Layout>
-        <h2 style={{ margin: '2em' }}>Participante</h2>
+    <Layout>
+      <div style={{ height: '100vh', padding: '2%' }}>
+        <h2>Participante</h2>
         <ParticipanteId participante={participante} />
-      </Layout>
-    </div>
+      </div>
+    </Layout>
   );
 };
 
