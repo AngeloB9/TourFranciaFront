@@ -19,7 +19,7 @@ export const getServerSideProps = async (ctx) => {
 const index = ({ etapa, comentarios }) => {
   return (
     <Layout>
-      <div style={{ padding: '2%' }}>
+      <div style={{ padding: '2%', height: '100vh' }}>
         <h1>Comentarios de la etapa numero {etapa.numero}:</h1>
         <br />
         {comentarios.map((comentario) => (

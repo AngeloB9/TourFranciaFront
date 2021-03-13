@@ -15,14 +15,12 @@ export async function getServerSideProps() {
 }
 const index = ({ data }) => {
   return (
-    <div>
-      <Layout>
+    <Layout>
+      <div style={{ height: '100vh' }}>
         <h2 style={{ margin: '2em' }}>Participantes</h2>
-        <div style={{ padding: '3em 8%' }}>
-          <CardParticipante data={data} corte={false} />
-        </div>
-      </Layout>
-    </div>
+        <CardParticipante data={data} corte={false} />
+      </div>
+    </Layout>
   );
 };
 
