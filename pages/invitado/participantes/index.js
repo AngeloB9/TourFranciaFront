@@ -16,7 +16,7 @@ export async function getServerSideProps() {
 const index = ({ data }) => {
   return (
     <Layout>
-      <div style={{ height: '100vh' }}>
+      <div style={{ height: '110vh' }}>
         <h2 style={{ margin: '2em' }}>Participantes</h2>
         <CardParticipante data={data} corte={false} />
       </div>

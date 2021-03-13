@@ -21,9 +21,9 @@ const ParticipantebyId = ({
         {nombre} {apellido}
       </h4>
 
-      <h5>{nacionalidad}</h5>
-      <h5>{equipo}</h5>
-      <h5>{datos_relevantes}</h5>
+      <h5>Nacionalidad: {nacionalidad}</h5>
+      <h5>Equipo:{equipo}</h5>
+      <h5>Datos relevantes: {datos_relevantes}</h5>
     </div>
   );
 };
